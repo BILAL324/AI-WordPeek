@@ -3,7 +3,7 @@
   "name": "AI-WordPeek",
   "version": "1.0",
   "description": "Click any word for instant AI-powered English & Urdu definition with an example sentence — powered by GPT-4o mini.",
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs"],
   "host_permissions": [
     "https://api.openai.com/*"
   ],

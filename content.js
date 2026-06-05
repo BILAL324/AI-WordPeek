@@ -57,6 +57,22 @@
     popup.querySelector('.wmp-close').onclick = (e) => { e.stopPropagation(); removePopup(); };
   }
 
+  function saveToHistory(word, data) {
+    chrome.storage.local.get('wordHistory', ({ wordHistory }) => {
+      const history = wordHistory || {};
+      history[word] = {
+        word,
+        englishDef: data.englishDef,
+        urduMeaning: data.urduMeaning,
+        partOfSpeech: data.partOfSpeech || '',
+        example: data.example || '',
+        savedAt: new Date().toISOString(),
+        lookupCount: (history[word]?.lookupCount || 0) + 1,
+      };
+      chrome.storage.local.set({ wordHistory: history });
+    });
+  }
+
   function renderResult(word, data) {
     if (!popup) return;
     popup.innerHTML = `
@@ -83,8 +99,16 @@
           <span class="wmp-example-label">Example</span>
           <p class="wmp-example">"${data.example}"</p>
         </div>` : ''}
+      </div>
+      <div class="wmp-footer">
+        <a class="wmp-history-link" href="#" id="wmp-open-history">📚 View Word History</a>
       </div>`;
     popup.querySelector('.wmp-close').onclick = (e) => { e.stopPropagation(); removePopup(); };
+    popup.querySelector('#wmp-open-history').addEventListener('click', (e) => {
+      e.preventDefault();
+      chrome.runtime.sendMessage({ type: 'OPEN_HISTORY' });
+    });
+    saveToHistory(word, data);
   }
 
   function renderError(word, message) {

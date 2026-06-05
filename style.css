@@ -167,3 +167,20 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.wmp-footer {
+  border-top: 1px solid #f3f4f6;
+  padding: 8px 14px;
+  text-align: center;
+}
+
+.wmp-history-link {
+  font-size: 12px;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.wmp-history-link:hover {
+  color: #4f46e5;
+}

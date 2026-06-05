@@ -8,6 +8,11 @@ chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
     return;
   }
 
+  if (request.type === 'OPEN_HISTORY') {
+    chrome.tabs.create({ url: chrome.runtime.getURL('history.html') });
+    return;
+  }
+
   if (request.type !== 'LOOKUP_WORD') return;
 
   chrome.storage.sync.get('openaiKey', async ({ openaiKey }) => {
