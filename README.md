@@ -1,10 +1,8 @@
 # AI-WordPeek — AI-Powered English & Urdu Dictionary Chrome Extension
 
-![AI-WordPeek](icon128.png)
+<img src="icon.png" alt="AI-WordPeek" width="120" />
 
 > Click any word on any webpage to instantly get its English definition, Urdu translation, and a real example sentence — powered by GPT-4o mini.
-
-![AI-WordPeek Extension](icon.png)
 
 ---
 
