@@ -1,0 +1,169 @@
+#wmp-popup {
+  position: fixed;
+  z-index: 2147483647;
+  width: 300px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: #1a1a2e;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+  animation: wmp-in 0.15s ease-out;
+}
+
+@keyframes wmp-in {
+  from { opacity: 0; transform: translateY(4px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.wmp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px 10px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+.wmp-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wmp-word {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+}
+
+.wmp-pos {
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.15);
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-style: italic;
+}
+
+.wmp-close {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.wmp-close:hover { background: rgba(255,255,255,0.3); }
+
+.wmp-body { padding: 12px 14px; }
+
+.wmp-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.wmp-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+.wmp-badge.en { background: #ede9fe; color: #5b21b6; }
+.wmp-badge.ur { background: #fce7f3; color: #9d174d; }
+
+.wmp-def {
+  margin: 0;
+  line-height: 1.5;
+  color: #374151;
+  font-size: 13.5px;
+}
+
+.wmp-urdu {
+  font-size: 15px;
+  direction: rtl;
+  text-align: right;
+  color: #1f2937;
+  line-height: 1.9;
+}
+
+.wmp-divider {
+  height: 1px;
+  background: #f3f4f6;
+  margin: 10px 0;
+}
+
+.wmp-example-block {
+  background: #f9fafb;
+  border-left: 3px solid #4f46e5;
+  padding: 8px 10px;
+  border-radius: 0 6px 6px 0;
+}
+
+.wmp-example-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.wmp-example {
+  margin: 0;
+  color: #4b5563;
+  font-size: 13px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.wmp-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 14px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.wmp-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e5e7eb;
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  animation: wmp-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes wmp-spin { to { transform: rotate(360deg); } }
+
+.wmp-error {
+  padding: 14px;
+  color: #b91c1c;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.wmp-link {
+  color: #4f46e5;
+  text-decoration: underline;
+  cursor: pointer;
+}

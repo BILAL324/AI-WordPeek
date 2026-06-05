@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-WordPeek — Settings</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f3ff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(79,70,229,0.10);
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #1f2937;
+      outline: none;
+      transition: border-color 0.15s;
+      background: #fafafa;
+    }
+
+    input:focus { border-color: #4f46e5; background: #fff; }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .input-row input { flex: 1; }
+
+    .toggle-btn {
+      padding: 0 14px;
+      background: #f3f4f6;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      color: #6b7280;
+      transition: background 0.15s;
+    }
+
+    .toggle-btn:hover { background: #e5e7eb; }
+
+    .hint {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .hint a { color: #4f46e5; text-decoration: none; }
+    .hint a:hover { text-decoration: underline; }
+
+    .save-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .save-btn:hover { opacity: 0.9; }
+    .save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .status {
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      display: none;
+    }
+
+    .status.success { background: #f0fdf4; color: #166534; display: block; }
+    .status.error   { background: #fef2f2; color: #991b1b; display: block; }
+
+    .divider { border: none; border-top: 1px solid #f3f4f6; margin: 28px 0; }
+
+    .info-box {
+      background: #f5f3ff;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .info-box p {
+      font-size: 13px;
+      color: #5b21b6;
+      line-height: 1.6;
+    }
+
+    .info-box strong { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">📖</div>
+    <h1>AI-WordPeek</h1>
+    <p class="subtitle">Enter your OpenAI API key to enable instant AI-powered English & Urdu word definitions on any webpage.</p>
+
+    <label for="apiKey">OpenAI API Key</label>
+    <div class="input-row">
+      <input type="password" id="apiKey" placeholder="sk-..." autocomplete="off" spellcheck="false" />
+      <button class="toggle-btn" id="toggleVisibility" title="Show/hide key">👁</button>
+    </div>
+    <p class="hint">
+      Your key is stored locally in your browser and never sent anywhere except OpenAI.<br>
+      Get a key at <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a>
+    </p>
+
+    <button class="save-btn" id="saveBtn">Save API Key</button>
+    <div class="status" id="status"></div>
+
+    <hr class="divider" />
+
+    <div class="info-box">
+      <p>
+        <strong>How to use:</strong> Once saved, simply click any word on any webpage and a popup will appear with the English definition, Urdu meaning, and an example sentence — powered by GPT-4o mini.
+      </p>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

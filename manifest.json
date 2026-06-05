@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "AI-WordPeek",
+  "version": "1.0",
+  "description": "Click any word for instant AI-powered English & Urdu definition with an example sentence — powered by GPT-4o mini.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://api.openai.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["style.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "AI-WordPeek — Click to set API key",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
