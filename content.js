@@ -151,13 +151,6 @@
     if (sel && sel.length > 1) lookup(sel, e.clientX, e.clientY);
   });
 
-  // Single-click: use caret position to find word under cursor
-  document.addEventListener('click', (e) => {
-    if (popup && popup.contains(e.target)) return;
-    const word = getWordAtPoint(e.clientX, e.clientY);
-    if (word) lookup(word, e.clientX, e.clientY);
-  });
-
   // Close when clicking outside popup
   document.addEventListener('mousedown', (e) => {
     if (popup && !popup.contains(e.target)) removePopup();
