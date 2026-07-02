@@ -46,8 +46,8 @@ Respond ONLY with a valid JSON object with these fields:
 - "englishDef": definition — 1 sentence for common, 2-3 sentences for technical/concept
 - "urduMeaning": Urdu meaning or translation in Urdu script (اردو)
 - "partOfSpeech": e.g. noun, verb, adjective, phrase, concept
-- "example": one natural example sentence
-- "example2": a second example sentence (only for concept/technical, otherwise null)
+- "example": for common words — a natural sentence using the word; for technical/concept — a real-world scenario or analogy that makes the concept click (NOT just the word used in a sentence, but something that actually demonstrates how the concept works or applies)
+- "example2": for technical/concept only — a second real-world scenario or analogy from a different angle to reinforce understanding; null for common words
 - "detail": null for common words; for technical/concept: 1-2 sentences of extra context, real-world relevance, or why it matters
 
 No extra text outside the JSON.`,
