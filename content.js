@@ -209,6 +209,7 @@
 
   // ── Event listeners ───────────────────────────────────────────────────────
 
+  // Double-click → single word lookup
   document.addEventListener('dblclick', (e) => {
     if (popup && popup.contains(e.target)) return;
     if (triggerBtn && triggerBtn.contains(e.target)) return;
@@ -216,8 +217,23 @@
     const sel = window.getSelection();
     const text = sel?.toString().trim().replace(/\s+/g, ' ');
 
-    // Filter: must be letters/spaces only, at least 2 chars
     if (!text || text.length < 2 || !/[a-zA-Z]/.test(text)) return;
+    // dblclick handles single words; multi-word is handled by mouseup
+    if (text.includes(' ')) return;
+
+    showTrigger(text, e.clientX, e.clientY);
+  });
+
+  // mouseup → multi-word selection (click+drag)
+  document.addEventListener('mouseup', (e) => {
+    if (popup && popup.contains(e.target)) return;
+    if (triggerBtn && triggerBtn.contains(e.target)) return;
+
+    const sel = window.getSelection();
+    const text = sel?.toString().trim().replace(/\s+/g, ' ');
+
+    // Only handle multi-word selections here (single words go through dblclick)
+    if (!text || !text.includes(' ') || !/[a-zA-Z]/.test(text)) return;
 
     showTrigger(text, e.clientX, e.clientY);
   });
