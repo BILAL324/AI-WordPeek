@@ -34,20 +34,30 @@ chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
           messages: [
             {
               role: 'system',
-              content: `You are a dictionary assistant. Given a word, respond with a JSON object with exactly these fields:
-- "englishDef": one concise English definition
-- "urduMeaning": the Urdu meaning or translation (written in Urdu script)
-- "partOfSpeech": e.g. noun, verb, adjective
-- "example": one short natural English sentence using the word
+              content: `You are an intelligent dictionary and concept explainer. Given a word, phrase, or concept, first classify it then respond accordingly.
 
-Respond only with valid JSON. No extra text.`,
+Classification rules:
+- "common": everyday word most people know (e.g. happy, run, book) → short response
+- "technical": uncommon, specialized, or deep word (e.g. serendipity, epistemology, recursion, jurisprudence) → detailed response
+- "concept": a multi-word phrase or idea that needs context to understand (e.g. opportunity cost, cognitive dissonance, machine learning, dark matter) → thorough response
+
+Respond ONLY with a valid JSON object with these fields:
+- "type": "common" | "technical" | "concept"
+- "englishDef": definition — 1 sentence for common, 2-3 sentences for technical/concept
+- "urduMeaning": Urdu meaning or translation in Urdu script (اردو)
+- "partOfSpeech": e.g. noun, verb, adjective, phrase, concept
+- "example": one natural example sentence
+- "example2": a second example sentence (only for concept/technical, otherwise null)
+- "detail": null for common words; for technical/concept: 1-2 sentences of extra context, real-world relevance, or why it matters
+
+No extra text outside the JSON.`,
             },
             {
               role: 'user',
-              content: `Word: ${request.word}`,
+              content: `Word or phrase: ${request.word}`,
             },
           ],
-          max_tokens: 200,
+          max_tokens: 400,
           temperature: 0.3,
         }),
       });
